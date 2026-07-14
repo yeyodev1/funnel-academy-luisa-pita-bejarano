@@ -1,12 +1,24 @@
-// Brand colors - customize per project
-$primary: #2094D2;
-$primary-dark: #010D27;
-$primary-light: #fefefe;
-$secondary: #2BBB92;
+// Luisa Pita Bejarano / Bakanology
+$LPB-GREEN: #16C784;
+$LPB-GREEN-D: #0A9E68;
+$LPB-BLACK: #0D1117;
+$LPB-DARK: #0D1117;
+$LPB-LIGHT: #F0FFF8;
+$LPB-SURFACE: #F5FFFA;
 
-$white: #fefefe;
-$text-light: #fefefe;
-$text-secondary: #6b7280;
+$LPB-PRIMARY: $LPB-GREEN;
+$LPB-SECONDARY: $LPB-GREEN-D;
+$LPB-ACCENT: $LPB-GREEN;
+
+// Existing semantic names remain available to current components.
+$primary: $LPB-GREEN;
+$primary-dark: $LPB-BLACK;
+$primary-light: $LPB-LIGHT;
+$secondary: $LPB-GREEN-D;
+
+$white: #ffffff;
+$text-light: #f5f5f5;
+$text-secondary: #52605b;
 
 // Alert colors
 $alert-warning: #f59e0b;

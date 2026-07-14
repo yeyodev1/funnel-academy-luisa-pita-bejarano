@@ -1,33 +1,35 @@
 <script setup lang="ts">
+import AuthorityGallery from '@/components/funnel/AuthorityGallery.vue'
+import FaqSection from '@/components/funnel/FaqSection.vue'
+import FunnelHero from '@/components/funnel/FunnelHero.vue'
+import FutureSection from '@/components/funnel/FutureSection.vue'
+import IncludedSection from '@/components/funnel/IncludedSection.vue'
+import PricingSection from '@/components/funnel/PricingSection.vue'
+import ProblemMethodSection from '@/components/funnel/ProblemMethodSection.vue'
+import StickyCta from '@/components/funnel/StickyCta.vue'
+import VslSection from '@/components/funnel/VslSection.vue'
 </script>
 
 <template>
-  <div class="home-view">
-    <h1>Este es el HomeView de Yeyo</h1>
-    <p>new-funnel-luisa-frontapp listo para trabajar</p>
-  </div>
+  <main class="home-view">
+    <FunnelHero />
+    <VslSection />
+    <ProblemMethodSection />
+    <AuthorityGallery />
+    <IncludedSection />
+    <PricingSection />
+    <FutureSection />
+    <FaqSection />
+    <StickyCta />
+  </main>
 </template>
 
 <style lang="scss" scoped>
 .home-view {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  gap: 1rem;
-
-  h1 {
-    font-family: $font-principal;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: $primary;
-  }
-
-  p {
-    font-family: $font-principal;
-    font-size: 1.2rem;
-    color: $text-secondary;
-  }
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 4.7rem;
 }
 </style>
