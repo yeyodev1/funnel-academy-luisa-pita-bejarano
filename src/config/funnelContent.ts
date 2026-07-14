@@ -14,24 +14,24 @@ export const funnelImages = [
 ] as const
 
 export const methodSteps = [
-  { number: '01', title: 'Atrae', text: 'Anuncios que captan la atención de las personas correctas.' },
-  { number: '02', title: 'Convierte', text: 'Una landing o WhatsApp diseñado para provocar acción.' },
-  { number: '03', title: 'Filtra', text: 'Preguntas y automatizaciones para separar curiosos de compradores.' },
-  { number: '04', title: 'Cierra', text: 'Más conversaciones calificadas y reuniones listas para vender.' },
+  { number: '01', title: 'Entrenamiento funcional', text: 'Movimientos inteligentes para desarrollar fuerza, estabilidad y tonificación sin rutinas eternas.' },
+  { number: '02', title: 'Nutrición de rendimiento', text: 'Aprende a alimentarte con energía y estructura, sin dietas de hambre ni restricciones imposibles.' },
+  { number: '03', title: 'Comunidad Vital', text: 'Acompañamiento, motivación y seguimiento para que no vuelvas a abandonar a mitad del camino.' },
 ] as const
 
 export const includedItems = [
-  'Guiones de anuncios ganadores listos para adaptar',
-  'Sistema para llenar tu calendario o tu WhatsApp',
-  'Cualificación automática de prospectos',
-  'Mapa de tráfico para WhatsApp y landing pages',
-  'Sesiones semanales con expertos en tecnología, ventas y Meta Ads',
-  'Comunidad privada de dueños de negocios',
+  'Plan anual de entrenamiento funcional, organizado mes a mes',
+  'Rutinas progresivas que puedes realizar desde casa o donde estés',
+  'Guías de nutrición para antes y después de entrenar',
+  'Transmisiones en vivo y acompañamiento de Luisa',
+  'Acceso a la comunidad privada de mujeres Vital 360',
+  'Nuevos retos y actualizaciones durante tu periodo de acceso',
 ] as const
 
 export const faqItems = [
-  { question: '¿Funciona para productos y servicios?', answer: 'Sí. Para servicios, el sistema se enfoca en agendar conversaciones calificadas. Para productos, se enfoca en llevar compradores listos a WhatsApp.' },
-  { question: '¿Necesito saber de tecnología?', answer: 'No. El método está explicado paso a paso y tendrás sesiones para resolver los bloqueos técnicos y comerciales.' },
-  { question: '¿Tengo que invertir miles en publicidad?', answer: 'No. Aprenderás a comenzar con presupuestos controlados, medir lo que ocurre y tomar decisiones con datos.' },
-  { question: '¿Puedo cancelar la suscripción?', answer: 'La cancelación y las condiciones exactas dependen del checkout. Revísalas antes de confirmar tu compra.' },
+  { question: '¿Necesito tener experiencia entrenando?', answer: 'No. El programa está organizado de forma progresiva para que puedas comenzar desde tu nivel actual y avanzar con una estructura clara.' },
+  { question: '¿Puedo entrenar desde casa?', answer: 'Sí. Vital 360 está diseñado para que puedas entrenar desde casa o donde estés, siguiendo las indicaciones de cada sesión.' },
+  { question: '¿Tengo que seguir una dieta extrema?', answer: 'No. El enfoque es aprender a alimentarte para rendir, desarrollar fuerza y sostener tus hábitos sin dietas de hambre.' },
+  { question: '¿Qué significa congelar mi precio?', answer: 'Si entras durante la preventa mensual, mantienes el precio promocional de $27 al mes mientras tu membresía permanezca activa, sujeto a las condiciones del checkout.' },
+  { question: '¿Cuál es la diferencia con el plan anual?', answer: 'La mensualidad te permite comenzar por $27. El upgrade anual asegura 12 meses completos por un pago único de $297.' },
 ] as const

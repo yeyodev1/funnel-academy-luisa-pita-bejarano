@@ -7,6 +7,7 @@ import IncludedSection from '@/components/funnel/IncludedSection.vue'
 import PricingSection from '@/components/funnel/PricingSection.vue'
 import ProblemMethodSection from '@/components/funnel/ProblemMethodSection.vue'
 import StickyCta from '@/components/funnel/StickyCta.vue'
+import ValueStackSection from '@/components/funnel/ValueStackSection.vue'
 import VslSection from '@/components/funnel/VslSection.vue'
 </script>
 
@@ -17,6 +18,7 @@ import VslSection from '@/components/funnel/VslSection.vue'
     <ProblemMethodSection />
     <AuthorityGallery />
     <IncludedSection />
+    <ValueStackSection />
     <PricingSection />
     <FutureSection />
     <FaqSection />
@@ -28,6 +30,7 @@ import VslSection from '@/components/funnel/VslSection.vue'
 .home-view {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   overflow: hidden;
   padding-bottom: 4.7rem;

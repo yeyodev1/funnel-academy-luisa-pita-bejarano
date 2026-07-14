@@ -1,6 +1,6 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-const STORAGE_KEY = 'bakanology_offer_expires_at'
+const STORAGE_KEY = 'luisa_pita_offer_expires_at'
 const OFFER_DURATION = 60 * 60 * 1000
 
 export function useCountdown() {
@@ -30,11 +30,7 @@ export function useCountdown() {
   const minutes = computed(() => Math.floor((remaining.value % 3600000) / 60000))
   const seconds = computed(() => Math.floor((remaining.value % 60000) / 1000))
   const isActive = computed(() => remaining.value > 0)
-  const price = computed(() => {
-    if (remaining.value > 40 * 60000) return 27
-    if (remaining.value > 20 * 60000) return 37
-    return 47
-  })
+  const price = computed(() => isActive.value ? 27 : 47)
 
   const format = (value: number) => String(value).padStart(2, '0')
 

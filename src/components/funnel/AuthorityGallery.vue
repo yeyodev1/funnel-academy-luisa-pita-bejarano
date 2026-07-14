@@ -8,18 +8,18 @@ const galleryImages = funnelImages.slice(3, 9)
   <section class="authority section-pad">
     <div class="funnel-container authority__inner">
       <div class="authority__heading">
-        <p class="eyebrow eyebrow--light"><span></span> EXPERIENCIA REAL</p>
-        <h2>No somos gurús. Somos una agencia que tuvo que resolver este problema primero.</h2>
-        <p>El Método Bakano nació al dejar de perseguir likes y comenzar a construir tuberías: tráfico, conversión, filtro y seguimiento.</p>
+        <p class="eyebrow eyebrow--light"><span></span> ENTRENA CON LUISA</p>
+        <h2>Una coach certificada que entiende la vida real de una mujer ocupada.</h2>
+        <p>Soy Luisa Pita Bejarano, Functional Trainer, Personal Trainer certificada e instructora de TRX y Tae Bo. Creé Vital 360 para ayudarte a recuperar tu fuerza, confianza y salud.</p>
       </div>
       <div class="authority__gallery">
         <figure v-for="(image, index) in galleryImages" :key="image" :class="{ 'authority__photo--wide': index === 0 || index === 5 }" class="authority__photo">
-          <img :src="image" :alt="`Experiencia y equipo Bakano ${index + 1}`" loading="lazy">
+          <img :src="image" :alt="`Luisa Pita Bejarano, coach de Vital 360 ${index + 1}`" loading="lazy">
         </figure>
       </div>
       <div class="authority__statement">
-        <strong>La meta no es que trabajes más.</strong>
-        <span>Es que tu sistema trabaje incluso cuando tú no estás publicando.</span>
+        <strong>No entrenas para castigarte.</strong>
+        <span>Entrenas porque amas tu cuerpo y quieres descubrir todo lo que es capaz de hacer.</span>
       </div>
     </div>
   </section>
@@ -30,11 +30,12 @@ const galleryImages = funnelImages.slice(3, 9)
   background: $primary-dark;
   color: $white;
 
-  &__inner { flex-direction: column; gap: 2.5rem; }
-  &__heading { display: flex; flex-direction: column; width: 100%; max-width: 58rem; gap: 1rem; }
+  &__inner { flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem; }
+  &__heading { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 58rem; gap: 1rem; text-align: center; }
   &__heading h2 { color: $white; }
   &__heading p:last-child { width: 100%; max-width: 46rem; color: rgba($white, 0.65); font-size: 1.05rem; line-height: 1.7; }
-  &__gallery { display: flex; flex-wrap: wrap; width: 100%; gap: 0.8rem; }
+  &__heading p:last-child { margin: 0 auto; }
+  &__gallery { display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; width: 100%; gap: 0.8rem; }
   &__photo {
     display: flex;
     flex: 1 1 14rem;
@@ -50,12 +51,14 @@ const galleryImages = funnelImages.slice(3, 9)
   &__photo--wide { flex-grow: 1.5; }
   &__statement {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
     gap: 1rem;
     padding: 1.5rem;
     border-left: 0.3rem solid $primary;
     background: rgba($white, 0.04);
+    text-align: center;
     strong { width: 100%; max-width: 20rem; color: $primary; font-size: 1.2rem; }
     span { width: 100%; color: rgba($white, 0.7); }
   }
@@ -65,7 +68,7 @@ const galleryImages = funnelImages.slice(3, 9)
   .authority {
     &__gallery { flex-direction: column; }
     &__photo { flex-basis: auto; min-height: 22rem; }
-    &__statement { flex-direction: column; align-items: flex-start; }
+    &__statement { flex-direction: column; align-items: center; }
   }
 }
 </style>

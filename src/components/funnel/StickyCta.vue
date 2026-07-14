@@ -8,7 +8,7 @@ const { minutes, seconds, price, isActive } = useCountdown()
   <aside class="sticky-cta">
     <div class="sticky-cta__inner funnel-container">
       <div class="sticky-cta__offer">
-        <span>{{ isActive ? 'OFERTA ACTIVA' : 'PRECIO REGULAR' }}</span><strong>${{ price }}</strong><small>primer mes</small>
+        <span>{{ isActive ? 'PRECIO CONGELADO' : 'PRECIO REGULAR' }}</span><strong>${{ price }}</strong><small>al mes</small>
       </div>
       <div class="sticky-cta__timer"><span>{{ minutes }}:{{ seconds }}</span><small>TIEMPO RESTANTE</small></div>
       <a href="#oferta">VER OFERTA <span>↑</span></a>
@@ -24,14 +24,16 @@ const { minutes, seconds, price, isActive } = useCountdown()
   left: 0;
   z-index: 20;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding: 0.65rem 0;
   border-top: 1px solid rgba($primary, 0.35);
   background: rgba($primary-dark, 0.94);
   backdrop-filter: blur(12px);
 
-  &__inner { align-items: center; gap: 1rem; }
-  &__offer { display: flex; align-items: baseline; width: 100%; gap: 0.5rem; color: $white; }
+  &__inner { justify-content: center; align-items: center; gap: 1rem; }
+  &__offer { display: flex; justify-content: center; align-items: baseline; width: 100%; gap: 0.5rem; color: $white; text-align: center; }
   &__offer > span { color: $primary; font-size: 0.65rem; font-weight: 900; letter-spacing: 0.08em; }
   &__offer strong { font-size: 1.7rem; }
   &__offer small { color: rgba($white, 0.55); }

@@ -13,9 +13,9 @@ const toggle = (index: number) => {
   <section id="faq" class="faq section-pad">
     <div class="funnel-container faq__inner">
       <div class="faq__heading">
-        <p class="eyebrow"><span></span> SIN LETRA PEQUEÑA</p>
-        <h2>Preguntas antes de empezar.</h2>
-        <p class="section-lead">La claridad también forma parte de una buena decisión.</p>
+        <p class="eyebrow"><span></span> ANTES DE EMPEZAR</p>
+        <h2>Todo lo que necesitas saber sobre Vital 360.</h2>
+        <p class="section-lead">Tu transformación debe comenzar con una decisión clara y segura.</p>
       </div>
       <div class="faq__list">
         <article v-for="(item, index) in faqItems" :key="item.question" class="faq__item" :class="{ 'faq__item--open': openIndex === index }">
@@ -26,8 +26,8 @@ const toggle = (index: number) => {
         </article>
       </div>
       <div class="faq__close">
-        <strong>Tu próximo cliente no debería depender de la suerte.</strong>
-        <a href="#oferta" class="primary-button">VER PLANES <span>↑</span></a>
+        <strong>Tu mejor versión no tiene que seguir esperando.</strong>
+        <a href="#oferta" class="primary-button">QUIERO UNIRME <span>↑</span></a>
       </div>
     </div>
   </section>
@@ -37,25 +37,25 @@ const toggle = (index: number) => {
 .faq {
   background: $white;
 
-  &__inner { align-items: flex-start; gap: clamp(2rem, 6vw, 6rem); }
-  &__heading { display: flex; flex: 1 1 0; flex-direction: column; width: 100%; max-width: 28rem; gap: 1rem; }
-  &__list { display: flex; flex: 1.4 1 0; flex-direction: column; width: 100%; gap: 0.7rem; }
+  &__inner { flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem; }
+  &__heading { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 46rem; gap: 1rem; text-align: center; }
+  &__list { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 52rem; gap: 0.7rem; }
   &__item { display: flex; flex-direction: column; width: 100%; overflow: hidden; border: 1px solid rgba($primary-dark, 0.1); border-radius: 0.8rem; transition: border-color 0.25s ease, background 0.25s ease; }
   &__item--open { border-color: $primary; background: $LPB-SURFACE; }
-  button { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 1rem; padding: 1.2rem; border: 0; background: transparent; color: $primary-dark; font: inherit; font-weight: 800; text-align: left; cursor: pointer; }
+  button { display: flex; justify-content: center; align-items: center; width: 100%; gap: 1rem; padding: 1.2rem; border: 0; background: transparent; color: $primary-dark; font: inherit; font-weight: 800; text-align: center; cursor: pointer; }
   button span { width: 100%; }
   button b { color: $primary; font-size: 1.5rem; }
   &__answer { display: flex; width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-  &__answer p { width: 100%; padding: 0 1.2rem 1.2rem; color: $text-secondary; line-height: 1.65; }
+  &__answer p { width: 100%; padding: 0 1.2rem 1.2rem; color: $text-secondary; line-height: 1.65; text-align: center; }
   &__item--open &__answer { max-height: 12rem; }
-  &__close { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 1.5rem; padding: 1.5rem; border-radius: 1rem; background: $primary-dark; }
-  &__close strong { width: 100%; color: $white; font-size: clamp(1.1rem, 3vw, 1.5rem); }
+  &__close { display: flex; justify-content: center; align-items: center; width: 100%; max-width: 52rem; gap: 1.5rem; padding: 1.5rem; border-radius: 1rem; background: $primary-dark; }
+  &__close strong { width: 100%; color: $white; font-size: clamp(1.1rem, 3vw, 1.5rem); text-align: center; }
   &__close .primary-button { max-width: 18rem; }
 }
 
 @media (max-width: 750px) {
   .faq {
-    &__inner, &__close { flex-direction: column; align-items: stretch; }
+    &__inner, &__close { flex-direction: column; align-items: center; }
     &__heading { max-width: none; }
     &__close .primary-button { max-width: none; }
   }

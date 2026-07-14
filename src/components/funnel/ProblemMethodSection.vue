@@ -2,9 +2,9 @@
 import { funnelImages, methodSteps } from '@/config/funnelContent'
 
 const painPoints = [
-  'Publicas todos los días, pero las conversaciones no llegan.',
-  'Escribes en frío y terminas persiguiendo a personas sin intención de compra.',
-  'Inviertes en marketing sin poder conectarlo con ventas reales.',
+  'Entrenas durante horas, pero tu composición corporal sigue estancada.',
+  'Saltas de una dieta a otra y recuperas rápidamente lo que habías perdido.',
+  'Sigues rutinas aleatorias que te frustran o ponen en riesgo tus articulaciones.',
 ] as const
 </script>
 
@@ -14,8 +14,8 @@ const painPoints = [
       <div class="problem__intro">
         <div class="problem__copy">
           <p class="eyebrow"><span></span> NO ES TU CULPA</p>
-          <h2>Te enseñaron a buscar atención, no a construir un sistema.</h2>
-          <p class="section-lead">Un dueño de negocio no necesita convertirse en influencer. Necesita saber de dónde vendrá la próxima conversación de venta.</p>
+          <h2>No necesitas más castigo. Necesitas una estructura que trabaje contigo.</h2>
+          <p class="section-lead">Si eres una mujer ocupada, tu entrenamiento debe adaptarse a tu vida y ayudarte a sentirte fuerte, activa y constante.</p>
           <div class="problem__pains">
             <div v-for="pain in painPoints" :key="pain" class="problem__pain">
               <span>×</span><p>{{ pain }}</p>
@@ -23,14 +23,14 @@ const painPoints = [
           </div>
         </div>
         <div class="problem__image">
-          <img :src="funnelImages[2]" alt="Emprendedora trabajando en su sistema comercial" loading="lazy">
+          <img :src="funnelImages[2]" alt="Luisa Pita Bejarano entrenando con Vital 360" loading="lazy">
         </div>
       </div>
 
       <div class="method">
         <div class="method__heading">
-          <p class="eyebrow"><span></span> EL MÉTODO BAKANO</p>
-          <h2>Cuatro movimientos. Un sistema predecible.</h2>
+          <p class="eyebrow"><span></span> LOS 3 PILARES DE VITAL 360</p>
+          <h2>Una transformación integral, no otra rutina aislada.</h2>
         </div>
         <div class="method__steps">
           <article v-for="step in methodSteps" :key="step.number" class="method__card">
@@ -40,7 +40,7 @@ const painPoints = [
           </article>
         </div>
         <div class="method__flow">
-          <strong>ANUNCIO</strong><span>→</span><strong>LANDING / WHATSAPP</strong><span>→</span><strong>FILTRO</strong><span>→</span><strong>VENTA</strong>
+          <strong>ENTRENA</strong><span>→</span><strong>ALIMÉNTATE</strong><span>→</span><strong>ACOMPÁÑATE</strong><span>→</span><strong>EVOLUCIONA</strong>
         </div>
       </div>
     </div>
@@ -51,15 +51,16 @@ const painPoints = [
 .problem {
   background: $white;
 
-  &__inner { flex-direction: column; gap: 7rem; }
-  &__intro { display: flex; align-items: stretch; width: 100%; gap: clamp(2rem, 6vw, 6rem); }
+  &__inner { flex-direction: column; justify-content: center; align-items: center; gap: 7rem; }
+  &__intro { display: flex; justify-content: center; align-items: center; width: 100%; gap: clamp(2rem, 6vw, 6rem); }
   &__copy, &__image { display: flex; flex: 1 1 0; flex-direction: column; width: 100%; }
-  &__copy { align-items: flex-start; justify-content: center; gap: 1.4rem; }
+  &__copy { align-items: center; justify-content: center; gap: 1.4rem; text-align: center; }
   &__image { max-width: 32rem; overflow: hidden; border-radius: 1.5rem; background: $LPB-LIGHT; }
   &__image img { width: 100%; height: 100%; min-height: 32rem; object-fit: cover; }
   &__pains { display: flex; flex-direction: column; width: 100%; gap: 0.75rem; margin-top: 0.5rem; }
   &__pain {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
     gap: 0.8rem;
@@ -70,28 +71,32 @@ const painPoints = [
     transition: border-color 0.25s ease, transform 0.25s ease;
     &:hover { transform: translateX(0.3rem); border-color: $primary; }
     span { color: $primary; font-size: 1.5rem; font-weight: 800; }
-    p { width: 100%; }
+    p { width: 100%; text-align: left; }
   }
 }
 
 .method {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   gap: 2rem;
 
-  &__heading { display: flex; flex-direction: column; width: 100%; max-width: 44rem; gap: 0.8rem; }
-  &__steps { display: flex; flex-wrap: wrap; width: 100%; gap: 1rem; }
+  &__heading { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 44rem; gap: 0.8rem; text-align: center; }
+  &__steps { display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; width: 100%; gap: 1rem; }
   &__card {
     display: flex;
     flex: 1 1 14rem;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     gap: 1rem;
     padding: 1.6rem;
     border-radius: 1rem;
     background: $primary-dark;
     color: $white;
+    text-align: center;
     transition: transform 0.25s ease, background 0.25s ease;
     &:hover { transform: translateY(-0.35rem); background: $LPB-GREEN-D; }
     h3 { width: 100%; font-size: 1.35rem; }

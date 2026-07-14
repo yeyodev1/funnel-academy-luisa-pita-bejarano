@@ -8,22 +8,22 @@ import { funnelImages } from '@/config/funnelContent'
     <div class="hero__glow"></div>
     <div class="hero__inner funnel-container">
       <div class="hero__copy">
-        <p class="eyebrow"><span></span> MÉTODO BAKANO</p>
-        <h1>Deja de rogar por clientes. Construye un sistema que los atraiga <em>cada día.</em></h1>
+        <p class="eyebrow"><span></span> VITAL 360 · LUISA PITA BEJARANO</p>
+        <h1>Deja de entrenar sin resultados. Activa tu cuerpo de forma <em>inteligente.</em></h1>
         <p class="hero__lead">
-          Descubre el método que ya ayudó a decenas de negocios a construir un flujo predecible de prospectos,
-          sin publicar contenido que nadie ve.
+          Pierde grasa, recupera tu fuerza y construye una tonificación real sin dietas de hambre,
+          rutinas eternas ni entrenar sola.
         </p>
-        <a class="primary-button" href="#oferta">QUIERO CONOCER EL MÉTODO <span>→</span></a>
+        <a class="primary-button" href="#oferta">QUIERO ENTRAR A VITAL 360 <span>→</span></a>
         <div class="hero__proof">
-          <strong>+50</strong>
-          <span>negocios han implementado<br>nuestros sistemas</span>
+          <strong>360°</strong>
+          <span>entrenamiento, nutrición<br>y comunidad</span>
         </div>
       </div>
       <div class="hero__visual">
         <div class="hero__image-wrap">
-          <img :src="funnelImages[0]" alt="Luisa Pita presentando el Método Bakano" fetchpriority="high">
-          <div class="hero__badge"><strong>BAKANO</strong><span>Captación predecible</span></div>
+          <img :src="funnelImages[0]" alt="Luisa Pita Bejarano presentando su método" fetchpriority="high">
+          <div class="hero__badge"><strong>VITAL 360</strong><span>Tu transformación integral</span></div>
         </div>
         <CountdownTimer />
       </div>
@@ -35,6 +35,8 @@ import { funnelImages } from '@/config/funnelContent'
 .hero {
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
@@ -55,10 +57,11 @@ import { funnelImages } from '@/config/funnelContent'
   &__inner {
     position: relative;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     gap: clamp(2rem, 6vw, 6rem);
     padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-bottom: 7rem;
   }
 
   &__copy, &__visual {
@@ -68,15 +71,16 @@ import { funnelImages } from '@/config/funnelContent'
     width: 100%;
   }
 
-  &__copy { align-items: flex-start; gap: 1.6rem; }
-  &__visual { gap: 1rem; max-width: 34rem; }
+  &__copy { align-items: center; gap: 1.6rem; text-align: center; }
+  &__visual { align-items: center; gap: 1rem; max-width: 30rem; }
 
   h1 {
     width: 100%;
     color: $white;
-    font-size: clamp(2.7rem, 5.8vw, 5.6rem);
+    font-size: clamp(2.7rem, 5.4vw, 4.75rem);
     line-height: 0.98;
     letter-spacing: -0.055em;
+    text-align: center;
 
     em { color: $primary; font-style: normal; }
   }
@@ -87,16 +91,19 @@ import { funnelImages } from '@/config/funnelContent'
     color: rgba($white, 0.7);
     font-size: clamp(1rem, 1.8vw, 1.2rem);
     line-height: 1.65;
+    text-align: center;
   }
 
   &__proof {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
     gap: 0.8rem;
     color: rgba($white, 0.66);
     font-size: 0.78rem;
     line-height: 1.35;
+    text-align: left;
 
     strong { color: $primary; font-size: 1.8rem; }
   }

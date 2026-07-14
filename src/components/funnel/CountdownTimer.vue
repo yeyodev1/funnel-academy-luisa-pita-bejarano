@@ -7,7 +7,7 @@ const { hours, minutes, seconds, isActive, price } = useCountdown()
 <template>
   <div class="countdown" role="timer" aria-live="polite">
     <p class="countdown__label">
-      {{ isActive ? `Tu precio actual: $${price}` : 'La oferta flash terminó' }}
+      {{ isActive ? `Congela tu precio en $${price} al mes` : 'La preventa terminó: precio regular $47' }}
     </p>
     <div class="countdown__time" aria-label="Tiempo restante">
       <span>{{ hours }}</span><b>:</b><span>{{ minutes }}</span><b>:</b><span>{{ seconds }}</span>

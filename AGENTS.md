@@ -30,5 +30,5 @@ Vue 3 + TypeScript + Vite funnel/landing app for client "Luisa Pita Bejarano". F
 
 - All structural layouts use `display: flex` and `width: 100%`; CSS Grid is explicitly prohibited.
 - Keep every source file below 400 lines. Funnel sections live as separate components under `src/components/funnel/`; `HomeView.vue` only composes them.
-- Checkout buttons use `VITE_CHECKOUT_URL`. Without it they intentionally fall back to `#faq`, so set the real checkout URL before launch.
-- The 60-minute offer deadline is created once and persisted in `localStorage` under `bakanology_offer_expires_at`; reloading must not reset it.
+- Base checkout buttons use `VITE_CHECKOUT_URL`; the VIP upgrade uses `VITE_VIP_CHECKOUT_URL` and `VITE_VIP_UPGRADE_PRICE` (default `15`). Missing checkout URLs intentionally fall back to `#faq`, so set real URLs before launch.
+- The 60-minute offer deadline is created once and persisted in `localStorage` under `luisa_pita_offer_expires_at`; reloading must not reset it.

@@ -6,19 +6,19 @@ import { funnelImages, includedItems } from '@/config/funnelContent'
   <section class="included section-pad">
     <div class="funnel-container included__inner">
       <div class="included__visual">
-        <img :src="funnelImages[9]" alt="Bakanology, formación para captar clientes" loading="lazy">
-        <div class="included__seal"><strong>100%</strong><span>APLICABLE</span></div>
+        <img :src="funnelImages[9]" alt="Programa de transformación Vital 360" loading="lazy">
+        <div class="included__seal"><strong>360°</strong><span>INTEGRAL</span></div>
       </div>
       <div class="included__copy">
-        <p class="eyebrow"><span></span> DENTRO DE BAKANOLOGY</p>
-        <h2>No necesitas otra biblioteca de videos. Necesitas un mapa.</h2>
-        <p class="section-lead">Accede al sistema, los recursos y el acompañamiento para instalar una máquina de captación adaptada a tu negocio.</p>
+        <p class="eyebrow"><span></span> TODO DENTRO DE VITAL 360</p>
+        <h2>No necesitas más videos sueltos. Necesitas un plan que puedas seguir.</h2>
+        <p class="section-lead">Recibe entrenamiento progresivo, orientación nutricional y una comunidad que te impulsa a continuar.</p>
         <div class="included__list">
           <div v-for="item in includedItems" :key="item" class="included__item">
             <span>✓</span><p>{{ item }}</p>
           </div>
         </div>
-        <a href="#oferta" class="primary-button">VER LA OFERTA COMPLETA <span>↓</span></a>
+        <a href="#oferta" class="primary-button">QUIERO MI PLAN VITAL 360 <span>↓</span></a>
       </div>
     </div>
   </section>
@@ -28,11 +28,11 @@ import { funnelImages, includedItems } from '@/config/funnelContent'
 .included {
   background: $LPB-SURFACE;
 
-  &__inner { flex-direction: row; align-items: center; gap: clamp(2.5rem, 7vw, 7rem); }
+  &__inner { flex-direction: row; justify-content: center; align-items: center; gap: clamp(2.5rem, 7vw, 7rem); }
   &__visual, &__copy { display: flex; flex: 1 1 0; flex-direction: column; width: 100%; }
   &__visual { position: relative; max-width: 31rem; overflow: hidden; border-radius: 1.5rem; }
   &__visual img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-  &__copy { align-items: flex-start; gap: 1.4rem; }
+  &__copy { align-items: center; gap: 1.4rem; text-align: center; }
   &__seal {
     position: absolute;
     right: 1rem;
@@ -54,10 +54,11 @@ import { funnelImages, includedItems } from '@/config/funnelContent'
   &__list { display: flex; flex-direction: column; width: 100%; gap: 0.65rem; }
   &__item {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
     gap: 0.8rem;
-    p { width: 100%; color: $primary-dark; font-weight: 650; }
+    p { width: 100%; color: $primary-dark; font-weight: 650; text-align: left; }
     span { display: flex; justify-content: center; align-items: center; width: 100%; max-width: 1.6rem; height: 1.6rem; flex-shrink: 0; border-radius: 50%; background: $primary; font-weight: 900; }
   }
 }
