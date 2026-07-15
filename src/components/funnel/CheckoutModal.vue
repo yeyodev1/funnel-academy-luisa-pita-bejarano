@@ -95,6 +95,16 @@ const waitForSdk = async () => {
   return undefined
 }
 
+const waitForContainer = async (id: string) => {
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    const el = document.getElementById(id)
+    if (el) return el
+    await nextTick()
+    await new Promise((resolve) => window.requestAnimationFrame(resolve))
+  }
+  return null
+}
+
 const renderPayment = async () => {
   errorMessage.value = ''
   if (!form.name.trim() || !form.lastName.trim() || !form.email.trim()) {
@@ -137,25 +147,26 @@ const renderPayment = async () => {
   loading.value = false
   await nextTick()
   overlay.value?.scrollTo({ top: 0 })
-
-  const PaymentBox = await waitForSdk()
-  const container = document.getElementById('payphone-button')
-
+  const [PaymentBox, container] = await Promise.all([
+    waitForSdk(),
+    waitForContainer('payphone-button'),
+  ])
   if (!PaymentBox || !container) {
     const sdkStatus = window.__payphoneSdkStatus
-    console.error('[PayPhone] SDK no disponible. status:', sdkStatus, 'container:', Boolean(container))
-    errorMessage.value = sdkStatus === 'error'
-      ? 'No se pudo descargar el proveedor de pago (revisa tu conexión, VPN o bloqueador de anuncios) y vuelve a intentar.'
-      : 'El proveedor de pago tardó demasiado en responder. Vuelve a intentar en unos segundos.'
+    console.error(
+      `[PayPhone] No se pudo montar la cajita. sdkStatus="${sdkStatus}" sdkReady=${Boolean(PaymentBox)} containerFound=${Boolean(container)}`,
+    )
+    errorMessage.value = !PaymentBox
+      ? (sdkStatus === 'error'
+        ? 'No se pudo descargar el proveedor de pago (revisa tu conexión, VPN o bloqueador de anuncios) y vuelve a intentar.'
+        : 'El proveedor de pago tardó demasiado en responder. Vuelve a intentar en unos segundos.')
+      : 'No se pudo mostrar el formulario de pago en la página. Vuelve a intentar.'
     return
   }
-
   container.innerHTML = ''
   const amount = Math.round(total.value * 100)
   const extrasLabel = extras.length ? extras.join(', ') : 'plan base'
-
   localStorage.setItem(`payphone_pending_${config.clientTransactionId}`, JSON.stringify({ amount, plan: props.plan, extras: extrasLabel }))
-
   new PaymentBox({
     token: config.token,
     clientTransactionId: config.clientTransactionId,
@@ -211,7 +222,6 @@ onUnmounted(() => {
           <strong>Preparando</strong>
           <small>tu pago seguro</small>
         </div>
-
         <div v-else-if="step === 'upgrades'" key="upgrades" class="checkout-modal__content">
           <div class="checkout-modal__visual" :class="{ 'checkout-modal__visual--annual': isAnnual }" :style="isAnnual ? { backgroundImage: `linear-gradient(90deg, rgba(8, 17, 22, 0.96), rgba(8, 17, 22, 0.62)), url('${funnelImages[5]}')` } : undefined">
             <div>
@@ -224,17 +234,14 @@ onUnmounted(() => {
           <p class="checkout-modal__intro">
             {{ isAnnual ? 'El plan anual incluye el Círculo VIP y el recetario nutricional sin pagos adicionales.' : monthlyIntro }}
           </p>
-
           <div v-if="annualDiscountActive" class="checkout-modal__annual-deal">
             <div><del>$400</del><strong>$297</strong><b>AHORRAS $103</b></div>
             <span>La oferta termina en {{ annualHours }}:{{ annualMinutes }}:{{ annualSeconds }}</span>
           </div>
-
           <div v-if="!isAnnual && bonusesActive" class="checkout-modal__timer">
             <span>{{ bonusTimer.hours }}:{{ bonusTimer.minutes }}:{{ bonusTimer.seconds }}</span>
             <small>{{ bonusExtensionActive ? `OPORTUNIDAD ${bonusExtensionUsed} DE 3 PARA DECIDIR` : '2 HORAS PARA ELEGIR TUS BONOS OPCIONALES' }}</small>
           </div>
-
           <div v-else-if="!isAnnual" class="checkout-modal__expired">
             <span>!</span>
             <div>
@@ -244,7 +251,6 @@ onUnmounted(() => {
              </div>
              <button v-if="opportunitiesLeft > 0" type="button" @click="bonusesForfeited ? recoverBonuses() : unlockBonusExtension()">RECUPERAR MIS BONOS · OPORTUNIDAD {{ bonusExtensionUsed + 1 }} DE 3 <b>+5 MIN</b></button>
           </div>
-
           <div v-if="!isAnnual && bonusesActive" class="checkout-modal__upgrades">
             <label :class="{ 'checkout-modal__upgrade--selected': addVip }" class="checkout-modal__upgrade">
               <input v-model="addVip" type="checkbox">
@@ -257,13 +263,11 @@ onUnmounted(() => {
               <b>+$5</b>
             </label>
           </div>
-
           <div v-if="isAnnual" class="checkout-modal__annual">
             <p><span>✓</span>Círculo VIP incluido</p>
             <p><span>✓</span>Recetario nutricional incluido</p>
             <p><span>✓</span>12 meses de Vital 360</p>
           </div>
-
           <div class="checkout-modal__details">
             <p>Crea tu acceso seguro</p>
             <div>
@@ -272,7 +276,6 @@ onUnmounted(() => {
             </div>
             <label><span>Correo electrónico</span><input v-model="form.email" type="email" autocomplete="email" placeholder="tu@email.com"></label>
           </div>
-
           <div class="checkout-modal__total">
             <span>TOTAL DE TU SELECCIÓN<small v-if="!isAnnual">AHORRAS $20 AL MES EN TU MEMBRESÍA</small></span><strong :aria-label="`Total $${total}`">${{ displayedTotal }}</strong>
           </div>
@@ -284,7 +287,6 @@ onUnmounted(() => {
              {{ isAnnual ? 'Pago único por 12 meses con todos los beneficios indicados.' : 'Tu membresía base siempre es $27. Con ambos bonos opcionales, el pago máximo es $47.' }}
           </small>
         </div>
-
         <div v-else key="payment" class="checkout-modal__payment">
           <button type="button" class="checkout-modal__back" @click="step = 'upgrades'">← VOLVER A MI SELECCIÓN</button>
           <h2>Completa tu pago de ${{ total }}</h2>
@@ -381,23 +383,14 @@ onUnmounted(() => {
 .checkout-transition-enter-from, .checkout-transition-leave-to { opacity: 0; }
 .checkout-transition-enter-from .checkout-modal { opacity: 0; transform: translateY(2rem) scale(0.95); }
 .checkout-transition-leave-to .checkout-modal { opacity: 0; transform: translateY(1rem) scale(0.97); }
-@keyframes checkout-spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes checkout-spin { to { transform: rotate(360deg); } }
 @keyframes bonus-selected { 0% { transform: scale(0.97); } 55% { transform: translateY(-0.18rem) scale(1.02); } 100% { transform: scale(1); } }
 @keyframes check-selected { 0% { transform: scale(0.65) rotate(-12deg); } 65% { transform: scale(1.18) rotate(4deg); } 100% { transform: scale(1); } }
-
 @media (prefers-reduced-motion: reduce) { .checkout-modal__upgrade, .checkout-modal__upgrade input, .checkout-modal__upgrade b { transition: none; animation: none; } }
 @media (max-width: 600px) {
-  .checkout-overlay { padding: 0.5rem; }
-  .checkout-modal { max-height: calc(100vh - 1rem); max-height: calc(100dvh - 1rem); }
-  .checkout-modal__content { gap: 0.4rem; padding: 0.75rem 1rem; }
-  .checkout-modal__visual { min-height: 5rem; }
-  .checkout-modal__timer { gap: 0.75rem; padding: 0.6rem 0.75rem; }
-  .checkout-modal__upgrades { flex-direction: column; }
-  .checkout-modal__upgrade { align-items: flex-start; gap: 0.65rem; padding: 0.75rem; }
-  .checkout-modal__details { gap: 0.45rem; padding: 0.75rem; }
-  .checkout-modal__details > div { gap: 0.5rem; }
+  .checkout-overlay { padding: 0.5rem; } .checkout-modal { max-height: calc(100vh - 1rem); max-height: calc(100dvh - 1rem); } .checkout-modal__content { gap: 0.4rem; padding: 0.75rem 1rem; }
+  .checkout-modal__visual { min-height: 5rem; } .checkout-modal__timer { gap: 0.75rem; padding: 0.6rem 0.75rem; } .checkout-modal__upgrades { flex-direction: column; }
+  .checkout-modal__upgrade { align-items: flex-start; gap: 0.65rem; padding: 0.75rem; } .checkout-modal__details { gap: 0.45rem; padding: 0.75rem; } .checkout-modal__details > div { gap: 0.5rem; }
   .checkout-modal__upgrade b { font-size: 1rem; }
 }
 </style>
